@@ -1,0 +1,50 @@
+{
+  "name": "@massimo-cassandro/json-table",
+  "version": "0.0.1",
+  "description": "Html table builder from json",
+  "main": "react/JsonTable.jsx",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/massimo-cassandro/jsonTable.git"
+  },
+  "publishConfig": {
+    "access": "public"
+  },
+  "keywords": [
+    "HTML",
+    "table",
+    "json",
+    "ajax"
+  ],
+  "stylelint": {
+    "extends": "@massimo-cassandro/linters-config/stylelintrc.js",
+    "ignoreFiles": [
+      "**/*.css"
+    ],
+    "rules": {}
+  },
+  "eslintConfig": {
+    "extends": "./node_modules/@massimo-cassandro/linters-config/eslintrc.js",
+    "ignorePatterns": [],
+    "rules": {}
+  },
+  "files": [
+    "react/**/*.{css,scss,js,jsx,map}",
+    "src/**/*.{css,scss,js,jsx,map}"
+  ],
+  "author": "Massimo Cassandro",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/massimo-cassandro/jsonTable/issues"
+  },
+  "homepage": "https://github.com/massimo-cassandro/jsonTable#readme",
+  "devDependencies": {
+    "@massimo-cassandro/linters-config": "^1.1.2"
+  },
+  "dependencies": {
+    "classnames": "^2.3.1"
+  }
+}
