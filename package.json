@@ -1,6 +1,6 @@
 {
   "name": "@massimo-cassandro/json-table",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "description": "Html table builder from json",
   "main": "react/JsonTable.jsx",
   "scripts": {
@@ -32,8 +32,9 @@
     "rules": {}
   },
   "files": [
-    "react/**/*.{css,scss,js,jsx,map}",
-    "src/**/*.{css,scss,js,jsx,map}"
+    "react-component/**/*.{css,scss,js,jsx,map}",
+    "src/**/*.{css,scss,js,jsx,map}",
+    "esm/**/*.{css,scss,js,map}"
   ],
   "author": "Massimo Cassandro",
   "license": "MIT",

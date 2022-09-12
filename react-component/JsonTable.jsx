@@ -12,10 +12,10 @@ import classnames from 'classnames';
 import { useState, useEffect, useRef } from 'react';
 // import styled from 'styled-components';
 import styles from './JsonTable.module.scss';
-// import {IconaInfo, IconaErrore} from '../../icon-components/icons';
+import {IconaInfo, IconaErrore} from '../../icon-components/icons';
 import uniqid from '@massimo-cassandro/m-utilities/js-utilities/unique-id';
 
-import build_page_array, {calcTotPages} from '../src/build_page_array';
+import build_page_array, {calcTotPages} from './src/build-page-array';
 
 
 function JsonTable(props) {
@@ -314,6 +314,7 @@ function JsonTable(props) {
 
       updateTable(<>
         <table className={props.tableClassName}>
+          {props.caption && <caption>{props.caption}</caption>}
           <thead>
             <tr>
               <TableHeadings />
@@ -401,6 +402,7 @@ function JsonTable(props) {
 // https://it.reactjs.org/docs/typechecking-with-proptypes.html
 
 JsonTable.propTypes = {
+  caption               : PropTypes.string,
   tableClassName        : PropTypes.string,
   ajaxUrl               : PropTypes.string,
   urlExtraQueryString   : PropTypes.string,
@@ -425,7 +427,7 @@ JsonTable.defaultProps = {
     </div>,
 
     error: <div className={classnames('text-danger', styles.msg)}>
-      {/* <IconaErrore /> */}
+      <IconaErrore />
       <div>
         <p className="fw-bold">Errore nel caricamento dei dati</p>
         <p className="xsmall">Riprova, e se l'errore si ripete contatta l'assistenza tecnica</p>
@@ -433,7 +435,7 @@ JsonTable.defaultProps = {
     </div>,
 
     nodata: <div className={classnames('text-info', styles.msg)}>
-      {/* <IconaInfo /> */}
+      <IconaInfo />
       <div className="fw-bold">Nessun dato disponibile</div>
     </div>
   }
