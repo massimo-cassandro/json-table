@@ -51,7 +51,6 @@ export const data_types = {
     render: d => ((d? +d : 0) * 100).toLocaleString('it-IT', {
       maximumFractionDigits   : 2,
       minimumFractionDigits   : 2,
-
     })
   },
   euro: {

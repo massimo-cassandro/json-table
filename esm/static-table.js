@@ -11,34 +11,13 @@ import fileDownload from 'js-file-download';
 import {defaults} from '../src/defaults';
 import {data_types} from '../src/columns-data-types';
 import setClassName from '../src/set-className';
-import tableToCsv from '../src/table-to-csv';
-import setDownloadFilename from '../src/set-download-filename';
+import downloadExcel from '../src/download-excel';
 
 
 function StaticTable(params) {
 
   params = {
-    ...{
-      columns                 : [], // definizione delle colonne
-      data                    : [], // dati
-      footerData              : [],
-      caption                 : null,
-      addRowIndex             : false, // se true aggiunge un attributo data al tr con l'indice del record json
-      tableClassName          : defaults.tableClassName,
-      wrapperClassName        : defaults.wrapperClassName,
-      centerAlignClassName    : defaults.centerAlignClassName,
-      rightAlignClassName     : defaults.rightAlignClassName,
-      percClassName           : defaults.percClassName,
-      euroClassName           : defaults.euroClassName,
-      showZero                : defaults.showZero,
-      zeroValuesChar          : defaults.zeroValuesChar,
-      showDownloadBtn         : defaults.showDownloadBtn,
-      downloadBtnLabel        : defaults.downloadBtnLabel,
-      downloadBtnClassName    : defaults.downloadBtnClassName,
-      downloadFilename        : defaults.downloadFilename,
-
-      trCallback              : defaults.trCallback,
-    },
+    ...defaults,
     ...params
   };
 
@@ -47,7 +26,7 @@ function StaticTable(params) {
     key                       : null, // chiave oggetto del json
     dataType                  : null, // tipo dati
     className                 : null, // classe
-    render                    : null, // funziona ad hoc per il rendering
+    render                    : null, // funzione ad hoc per il rendering
     parse                     : null, // funzione ad hoc per ottenere il valore
     rowHeading                : false // se true, i dati sono inseriti in un th anziché un td
   };
@@ -83,25 +62,30 @@ function StaticTable(params) {
               let content,
                 addFormatClass = true;
 
-              if(col.parse && typeof col.parse === 'function') {
-                content = col.parse(row);
-              } else {
-                content = row[col.key];
-              }
+              if(row[col.key] === null) {
+                content = ''
+                } else {
 
-              if(content === null) {
-                content = '';
-                addFormatClass = false;
+                if(col.parse && typeof col.parse === 'function') {
+                  content = col.parse(row);
+                } else {
+                  content = row[col.key];
+                }
 
-              } else if(content === 0 && !params.showZero) {
-                content = params.zeroValuesChar;
-                addFormatClass = false;
+                if(content === null) {
+                  content = '';
+                  addFormatClass = false;
 
-              } else if(col.render && typeof col.render === 'function') {
-                content = col.render(content);
+                } else if(content === 0 && !params.showZero) {
+                  content = params.zeroValuesChar;
+                  addFormatClass = false;
 
-              } else if(col.dataType && data_types[col.dataType]?.render) {
-                content = data_types[col.dataType].render(content);
+                } else if(col.render && typeof col.render === 'function') {
+                  content = col.render(content);
+
+                } else if(col.dataType && data_types[col.dataType]?.render) {
+                  content = data_types[col.dataType].render(content);
+                }
               }
 
               const isTh = col.rowHeading && i === 0,
@@ -115,7 +99,27 @@ function StaticTable(params) {
         }).join('');
       };
 
-      return `<div class="${params.wrapperClassName}">
+      let downloadBtn = '';
+      if(params.showDownloadBtn) {
+        const btn_id = table_id + '-dwnld-btn';
+        downloadBtn =
+          `<div class="${params.rightAlignClassName}">
+            <button type="button"
+              id="${btn_id}"
+              class="${params.downloadBtnClassName}"
+            >${params.downloadBtnLabel}</button>
+          </div>`;
+
+        document.body.addEventListener('click', e => {
+          if(e.target.id === btn_id) {
+
+            downloadExcel(params);
+
+          }
+        }, false);
+      }
+
+      const table = `<div class="${params.wrapperClassName}">
         <table class="${params.tableClassName}" id="${table_id}">
           ${params.caption? `<caption>${params.caption}</caption>` : ''}
           <thead>
@@ -129,21 +133,17 @@ function StaticTable(params) {
           ${params.footerData?.length? `<tfoot>${tableRows(params.footerData)}</tfoot>` : ''}
         </table>
       </div>`;
-      // ${params.showDownloadBtn?
-      //   `<div class="${params.rightAlignClassName}">
-      //     <button type="button"
-      //       class="${params.downloadBtnClassName}"
-      //       onClick={() => {
-      //         fileDownload(
-      //           tableToCsv(document.getElementBy(table_id)),
-      //           setDownloadFilename(params.downloadFilename)
-      //         );
-      //       }}
-      //     >{params.downloadBtnLabel}</button>
-      //     {/* eslint-enable jsx-a11y/anchor-is-valid */}
-      //   </div>`
-      // }
-      // `;
+
+      if(params.showDownloadBtn && params.separateDownloadBtn) {
+        return [
+          table,
+          downloadBtn
+        ];
+      } else {
+
+        return table + downloadBtn;
+      }
+
 
   } catch(e) { //throw error
     console.error( e ); // eslint-disable-line
