@@ -1,6 +1,6 @@
 {
   "name": "@massimo-cassandro/json-table",
-  "version": "0.0.4",
+  "version": "0.0.5",
   "description": "Html table builder from json",
   "main": "react/JsonTable.jsx",
   "scripts": {
@@ -48,6 +48,7 @@
     "@massimo-cassandro/linters-config": "^1.1.2"
   },
   "dependencies": {
-    "classnames": "^2.3.1"
+    "classnames": "^2.3.1",
+    "xlsx": "^0.18.5"
   }
 }
