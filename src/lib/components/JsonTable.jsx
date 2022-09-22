@@ -11,11 +11,10 @@ import PropTypes from 'prop-types';
 import classnames from 'classnames';
 import { useState, useEffect, useRef } from 'react';
 // import styled from 'styled-components';
-import styles from './JsonTable.module.scss';
-import {IconaInfo, IconaErrore} from '../../icon-components/icons';
+import styles from './styles/JsonTable.module.scss';
 import uniqid from '@massimo-cassandro/m-utilities/js-utilities/unique-id';
 
-import build_page_array, {calcTotPages} from './src/build-page-array';
+import build_page_array, {calcTotPages} from '../src/build-page-array';
 
 
 function JsonTable(props) {
@@ -409,6 +408,8 @@ JsonTable.propTypes = {
   order                 : PropTypes.array,
   columns               : PropTypes.array,
   pageRows              : PropTypes.number,
+  iconaErrore           : PropTypes.element,
+  iconaInfo             : PropTypes.element,
   defaultContents:  PropTypes.exact({
     loading             : PropTypes.element,
     error               : PropTypes.element,
@@ -427,7 +428,7 @@ JsonTable.defaultProps = {
     </div>,
 
     error: <div className={classnames('text-danger', styles.msg)}>
-      <IconaErrore />
+      {props.iconaErrore}
       <div>
         <p className="fw-bold">Errore nel caricamento dei dati</p>
         <p className="xsmall">Riprova, e se l'errore si ripete contatta l'assistenza tecnica</p>
@@ -435,7 +436,7 @@ JsonTable.defaultProps = {
     </div>,
 
     nodata: <div className={classnames('text-info', styles.msg)}>
-      <IconaInfo />
+      {props.iconaInfo}
       <div className="fw-bold">Nessun dato disponibile</div>
     </div>
   }

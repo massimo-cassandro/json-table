@@ -6,7 +6,6 @@
  */
 
 import uniqid from '@massimo-cassandro/m-utilities/js-utilities/unique-id';
-import fileDownload from 'js-file-download';
 
 import {defaults} from '../src/defaults';
 import {data_types} from '../src/columns-data-types';

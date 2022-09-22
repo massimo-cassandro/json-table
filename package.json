@@ -1,12 +1,14 @@
 {
   "name": "@massimo-cassandro/json-table",
-  "version": "0.0.5",
+  "version": "0.0.7",
   "description": "Html table builder from json",
-  "main": "react/JsonTable.jsx",
+  "main": "dist/index.js",
+  "module": "dist/esm/static-table.js",
   "scripts": {
     "npm update": "npm update",
     "upd vers + npm publish": "node update-version.mjs && npm publish",
-    "upd vers": "node update-version.mjs"
+    "upd vers": "node update-version.mjs",
+    "build": "rm -rf dist && NODE_ENV=production babel src/lib --out-dir dist --copy-files"
   },
   "repository": {
     "type": "git",
@@ -34,9 +36,7 @@
     "rules": {}
   },
   "files": [
-    "react-component/**/*.{css,scss,js,jsx,map}",
-    "src/**/*.{css,scss,js,jsx,map}",
-    "esm/**/*.{css,scss,js,map}"
+    "dist/**/*.{css,scss,js,jsx,map}"
   ],
   "author": "Massimo Cassandro",
   "license": "MIT",
@@ -45,10 +45,22 @@
   },
   "homepage": "https://github.com/massimo-cassandro/jsonTable#readme",
   "devDependencies": {
-    "@massimo-cassandro/linters-config": "^1.1.2"
+    "@babel/cli": "^7.18.10",
+    "@babel/core": "^7.19.1",
+    "@babel/polyfill": "^7.12.1",
+    "@babel/preset-env": "^7.19.1",
+    "@babel/preset-react": "^7.18.6",
+    "@massimo-cassandro/linters-config": "^1.1.5",
+    "react": "^18.2.0",
+    "react-dom": "^18.2.0"
   },
   "dependencies": {
     "classnames": "^2.3.1",
+    "js-file-download": "^0.4.12",
     "xlsx": "^0.18.5"
+  },
+  "peerDependencies": {
+    "react": ">=18.2.0",
+    "react-dom": ">=18.2.0"
   }
 }

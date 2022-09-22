@@ -1,6 +1,5 @@
 /**
  * StaticTable per react
- * Utilizza gli stessi tracciati di jQuery datatable
  * @param {object} columns - elenco delle colonne.
  * @author Massimo Cassandro
  */
@@ -9,7 +8,7 @@ import PropTypes from 'prop-types';
 // import classnames from 'classnames';
 import { useRef } from 'react';
 // import uniqid from '@massimo-cassandro/m-utilities/js-utilities/unique-id';
-import tableToCsv from './src/table-to-csv';
+import tableToCsv from '../src/table-to-csv';
 import fileDownload from 'js-file-download';
 
 function StaticTable(props) {
@@ -19,6 +18,7 @@ function StaticTable(props) {
   // la classe std viene sovrascitta se presente come parametro nella colonna
   const data_types = {
       // string: {}
+      // element: {},
       date: {
         className   : props.centerAlignClassName,
         render: d => Date(d).toLocaleString('it-IT', {
@@ -173,7 +173,7 @@ function StaticTable(props) {
           className={props.downloadBtnClassName}
           onClick={() => {
             fileDownload(
-              tableToCsv(tableRef.current),
+              tableToCsv(tableRef.current, props.zeroValuesChar),
               setDownloadFilename(props.downloadFilename)
             );
           }}
@@ -199,11 +199,15 @@ StaticTable.propTypes = {
   columns                 : PropTypes.arrayOf(PropTypes.shape({
     title                 : PropTypes.oneOfType([
       PropTypes.string,
-      PropTypes.element
+      PropTypes.element,
+      PropTypes.node,
     ]).isRequired,
     key                   : PropTypes.string,
     dataType              : PropTypes.string,
-    className             : PropTypes.string,
+    className             : PropTypes.oneOfType([
+      PropTypes.string,
+      PropTypes.func
+    ]),
     render                : PropTypes.func,
     parse                 : PropTypes.func,
     rowHeading            : PropTypes.bool

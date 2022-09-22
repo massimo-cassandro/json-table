@@ -1,10 +1,9 @@
-export default function (tableEl, zeroValuesChar) {
-
+export default function (tableEl, zeroValuesChar = null) {
 
   const normalize = str => {
     let is_number = !isNaN(parseFloat(str));
 
-    str = str.replace(/;/g, '').replace(/\"/g, '""');
+    str = str.replace(/;/g, '').replace(/"/g, '""');
     if(is_number) {
       str = str.replace(/\./g, ''); // sep migliaia
     }

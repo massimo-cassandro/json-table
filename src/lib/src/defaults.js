@@ -22,7 +22,7 @@ export const defaults = {
   trCallback              : null,
 
   // array di eventuali fogli da aggiungere all'excel nel download
-  // opgni elemento dell'array è un oggetto con
+  // ogni elemento dell'array è un oggetto con
   // name - nome dela foglio
   // data - array già formattato da trasformare in excel
   extraDownloadSheets     : null
