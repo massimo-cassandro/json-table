@@ -1,6 +1,6 @@
 {
   "name": "@massimo-cassandro/json-table",
-  "version": "0.0.8",
+  "version": "0.0.9",
   "description": "Html table builder from json",
   "main": "dist/index.js",
   "module": "dist/esm/static-table.js",
@@ -24,19 +24,15 @@
     "ajax"
   ],
   "stylelint": {
-    "extends": "@massimo-cassandro/linters-config/stylelintrc.js",
-    "ignoreFiles": [
-      "**/*.css"
-    ],
-    "rules": {}
+    "extends": "@massimo-cassandro/linters-config/stylelintrc.js"
   },
   "eslintConfig": {
-    "extends": "./node_modules/@massimo-cassandro/linters-config/eslintrc.js",
-    "ignorePatterns": [],
-    "rules": {}
+    "extends": "./node_modules/@massimo-cassandro/linters-config/eslintrc.js"
   },
   "files": [
-    "dist/**/*.{css,scss,js,jsx,map}"
+    "dist/**/*.{css,scss,js,jsx,map}",
+    "esm/**/*.{css,scss,js,jsx,map}",
+    "src/**/*.{css,scss,js,jsx,map}"
   ],
   "author": "Massimo Cassandro",
   "license": "MIT",
