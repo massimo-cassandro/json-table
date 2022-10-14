@@ -143,19 +143,21 @@ function StaticTable(props) {
     className: props.tableClassName,
     ref: tableRef
   }, props.caption && /*#__PURE__*/React.createElement("caption", null, props.caption), /*#__PURE__*/React.createElement("thead", null, /*#__PURE__*/React.createElement("tr", null, /*#__PURE__*/React.createElement(TableHeadings, null))), /*#__PURE__*/React.createElement("tbody", null, tableRows(props.data)), props.footerData && /*#__PURE__*/React.createElement("tfoot", null, tableRows(props.footerData)))), props.showDownloadBtn && /*#__PURE__*/React.createElement("div", {
-    className: props.rightAlignClassName
+    className: "d-flex"
+  }, props.footerInfo && /*#__PURE__*/React.createElement("div", null, props.footerInfo), /*#__PURE__*/React.createElement("div", {
+    className: `flex-grow-1 ${props.rightAlignClassName}`
   }, /*#__PURE__*/React.createElement("button", {
     type: "button",
     className: props.downloadBtnClassName,
     onClick: () => {
       (0, _jsFileDownload.default)((0, _tableToCsv.default)(tableRef.current, props.zeroValuesChar), setDownloadFilename(props.downloadFilename));
     }
-  }, props.downloadBtnLabel)));
+  }, props.downloadBtnLabel))));
 } // https://it.reactjs.org/docs/typechecking-with-proptypes.html
 
 
 StaticTable.propTypes = {
-  caption: _propTypes.default.string,
+  caption: _propTypes.default.oneOfType([_propTypes.default.string, _propTypes.default.element]),
   tableClassName: _propTypes.default.string,
   wrapperClassName: _propTypes.default.string,
   centerAlignClassName: _propTypes.default.string,
@@ -178,7 +180,8 @@ StaticTable.propTypes = {
   showDownloadBtn: _propTypes.default.bool,
   downloadBtnLabel: _propTypes.default.string,
   downloadBtnClassName: _propTypes.default.string,
-  downloadFilename: _propTypes.default.string
+  downloadFilename: _propTypes.default.string,
+  footerInfo: _propTypes.default.oneOfType([_propTypes.default.string, _propTypes.default.element])
 };
 StaticTable.defaultProps = {
   tableClassName: 'table',

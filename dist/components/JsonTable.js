@@ -9,7 +9,7 @@ var _propTypes = _interopRequireDefault(require("prop-types"));
 
 var _classnames = _interopRequireDefault(require("classnames"));
 
-var _react = require("react");
+var _react = _interopRequireWildcard(require("react"));
 
 var _JsonTableModule = _interopRequireDefault(require("./styles/JsonTable.module.scss"));
 
@@ -87,7 +87,7 @@ function JsonTable(props) {
 
   (0, _react.useEffect)(() => {
     const setDefaultContent = (contentType, offsetTop) => {
-      updateDefaultContent(contentType && /*#__PURE__*/React.createElement("div", {
+      updateDefaultContent(contentType && /*#__PURE__*/_react.default.createElement("div", {
         className: _JsonTableModule.default.msgWrapper,
         style: {
           paddingTop: offsetTop ? `${offsetTop - 10}px` : null
@@ -145,19 +145,19 @@ function JsonTable(props) {
 
     const TableHeadings = () => {
       const SortArrows = () => {
-        return /*#__PURE__*/React.createElement("div", {
+        return /*#__PURE__*/_react.default.createElement("div", {
           className: _JsonTableModule.default.sortArrows
-        }, /*#__PURE__*/React.createElement("svg", {
+        }, /*#__PURE__*/_react.default.createElement("svg", {
           xmlns: "http://www.w3.org/2000/svg",
           viewBox: "0 0 16 8",
           className: _JsonTableModule.default.arrowUp
-        }, /*#__PURE__*/React.createElement("path", {
+        }, /*#__PURE__*/_react.default.createElement("path", {
           d: "M0 0L16 0 7.959 8z"
-        })), /*#__PURE__*/React.createElement("svg", {
+        })), /*#__PURE__*/_react.default.createElement("svg", {
           xmlns: "http://www.w3.org/2000/svg",
           viewBox: "0 0 16 8",
           className: _JsonTableModule.default.arrowDn
-        }, /*#__PURE__*/React.createElement("path", {
+        }, /*#__PURE__*/_react.default.createElement("path", {
           d: "M0 0L16 0 7.959 8z"
         })));
       };
@@ -176,7 +176,7 @@ function JsonTable(props) {
             isOrderable = true;
           }
 
-          return /*#__PURE__*/React.createElement("th", _extends({
+          return /*#__PURE__*/_react.default.createElement("th", _extends({
             className: (0, _classnames.default)(col.className, order_classes),
             key: idx,
             scope: "col"
@@ -185,7 +185,7 @@ function JsonTable(props) {
               let prevOrder = orderArray.filter(item => item[0] === idx)[0] ?? [];
               updateUrl(1, searchStr, [[idx, prevOrder[1] === 'asc' ? 'desc' : 'asc']]);
             }
-          }), /*#__PURE__*/React.createElement("div", null, col.title, isOrderable && /*#__PURE__*/React.createElement(SortArrows, null)));
+          }), /*#__PURE__*/_react.default.createElement("div", null, col.title, isOrderable && /*#__PURE__*/_react.default.createElement(SortArrows, null)));
         } else {
           return '';
         }
@@ -194,7 +194,7 @@ function JsonTable(props) {
 
     const TableRows = () => {
       return jsonData.data.map((row, idx) => {
-        return /*#__PURE__*/React.createElement("tr", {
+        return /*#__PURE__*/_react.default.createElement("tr", {
           key: idx
         }, props.columns.filter(col => {
           return columnIsVisible(col);
@@ -204,7 +204,7 @@ function JsonTable(props) {
           if (col.render !== undefined && typeof col.render === 'function') {
             cell_content = col.render(row);
           } else if (col.type === 'sf_date') {
-            cell_content = /*#__PURE__*/React.createElement("span", {
+            cell_content = /*#__PURE__*/_react.default.createElement("span", {
               className: "text-nowrap"
             }, new Date(row[col.data].date).toLocaleString('it-IT', {
               year: '2-digit',
@@ -215,7 +215,7 @@ function JsonTable(props) {
             let val = +row[col.data];
 
             if (val) {
-              cell_content = /*#__PURE__*/React.createElement("span", {
+              cell_content = /*#__PURE__*/_react.default.createElement("span", {
                 className: "euro"
               }, val.toLocaleString('it-IT', {
                 minimumFractionDigits: 2,
@@ -228,7 +228,7 @@ function JsonTable(props) {
             cell_content = row[col.data];
           }
 
-          return /*#__PURE__*/React.createElement("td", {
+          return /*#__PURE__*/_react.default.createElement("td", {
             key: i,
             className: (0, _classnames.default)(col.className)
           }, cell_content);
@@ -239,19 +239,19 @@ function JsonTable(props) {
     const Pagination = () => {
       if (jsonData?.recordsFiltered) {
         const page_array = (0, _buildPageArray.default)(currentPage, props.pageRows, jsonData.recordsFiltered);
-        return /*#__PURE__*/React.createElement("nav", {
+        return /*#__PURE__*/_react.default.createElement("nav", {
           id: navBarId,
           "aria-label": "Navigazione pagine",
           className: _JsonTableModule.default.paginationNav
-        }, /*#__PURE__*/React.createElement("ul", null, page_array.map((pag, i) => {
+        }, /*#__PURE__*/_react.default.createElement("ul", null, page_array.map((pag, i) => {
           let content;
 
           if (pag === currentPage) {
-            content = /*#__PURE__*/React.createElement("span", {
+            content = /*#__PURE__*/_react.default.createElement("span", {
               className: _JsonTableModule.default.selected
             }, pag);
           } else if (pag !== null) {
-            content = /*#__PURE__*/React.createElement("button", {
+            content = /*#__PURE__*/_react.default.createElement("button", {
               type: "button",
               title: `Vai a pagina ${pag}`,
               onClick: e => {
@@ -260,10 +260,10 @@ function JsonTable(props) {
               }
             }, pag);
           } else {
-            content = /*#__PURE__*/React.createElement("span", null, "\u2026");
+            content = /*#__PURE__*/_react.default.createElement("span", null, "\u2026");
           }
 
-          return /*#__PURE__*/React.createElement("li", {
+          return /*#__PURE__*/_react.default.createElement("li", {
             key: i
           }, content);
         })));
@@ -273,17 +273,17 @@ function JsonTable(props) {
     };
 
     if (jsonData?.recordsFiltered) {
-      updateTable( /*#__PURE__*/React.createElement(React.Fragment, null, /*#__PURE__*/React.createElement("table", {
+      updateTable( /*#__PURE__*/_react.default.createElement(_react.default.Fragment, null, /*#__PURE__*/_react.default.createElement("table", {
         className: props.tableClassName
-      }, props.caption && /*#__PURE__*/React.createElement("caption", null, props.caption), /*#__PURE__*/React.createElement("thead", null, /*#__PURE__*/React.createElement("tr", null, /*#__PURE__*/React.createElement(TableHeadings, null))), /*#__PURE__*/React.createElement("tbody", null, /*#__PURE__*/React.createElement(TableRows, null))), /*#__PURE__*/React.createElement(Pagination, null))); // =>> Update table info
+      }, props.caption && /*#__PURE__*/_react.default.createElement("caption", null, props.caption), /*#__PURE__*/_react.default.createElement("thead", null, /*#__PURE__*/_react.default.createElement("tr", null, /*#__PURE__*/_react.default.createElement(TableHeadings, null))), /*#__PURE__*/_react.default.createElement("tbody", null, /*#__PURE__*/_react.default.createElement(TableRows, null))), /*#__PURE__*/_react.default.createElement(Pagination, null))); // =>> Update table info
 
-      updateTableInfo( /*#__PURE__*/React.createElement(React.Fragment, null, (+jsonData.recordsFiltered).toLocaleString('it-IT', {
+      updateTableInfo( /*#__PURE__*/_react.default.createElement(_react.default.Fragment, null, (+jsonData.recordsFiltered).toLocaleString('it-IT', {
         minimumFractionDigits: 0,
         maximumFractionDigits: 0
       }), " record trovati", jsonData.recordsFiltered < jsonData.recordsTotal ? ` (su un totale di ${(+jsonData.recordsTotal).toLocaleString('it-IT', {
         minimumFractionDigits: 0,
         maximumFractionDigits: 0
-      })})` : '', /*#__PURE__*/React.createElement("br", null), /*#__PURE__*/React.createElement("a", {
+      })})` : '', /*#__PURE__*/_react.default.createElement("br", null), /*#__PURE__*/_react.default.createElement("a", {
         href: `#${navBarId}`,
         title: "Vai alla navigazione delle pagine",
         onClick: e => {
@@ -294,10 +294,10 @@ function JsonTable(props) {
             inline: 'end'
           });
         }
-      }, "Pagina ", /*#__PURE__*/React.createElement("strong", null, currentPage), " di ", /*#__PURE__*/React.createElement("strong", null, (0, _buildPageArray.calcTotPages)(jsonData.recordsFiltered, props.pageRows)))));
+      }, "Pagina ", /*#__PURE__*/_react.default.createElement("strong", null, currentPage), " di ", /*#__PURE__*/_react.default.createElement("strong", null, (0, _buildPageArray.calcTotPages)(jsonData.recordsFiltered, props.pageRows)))));
     } else {
       updateTable(null);
-      updateTableInfo( /*#__PURE__*/React.createElement(React.Fragment, null, "Nessun record trovato"));
+      updateTableInfo( /*#__PURE__*/_react.default.createElement(_react.default.Fragment, null, "Nessun record trovato"));
     } // eslint-disable-next-line react-hooks/exhaustive-deps
 
   }, [jsonData, orderArray]);
@@ -308,16 +308,16 @@ function JsonTable(props) {
       inline: 'start'
     });
   }, [table]);
-  return /*#__PURE__*/React.createElement(React.Fragment, null, /*#__PURE__*/React.createElement("div", {
+  return /*#__PURE__*/_react.default.createElement(_react.default.Fragment, null, /*#__PURE__*/_react.default.createElement("div", {
     className: _JsonTableModule.default.mainWrapper,
     ref: container
-  }, /*#__PURE__*/React.createElement("div", {
+  }, /*#__PURE__*/_react.default.createElement("div", {
     className: _JsonTableModule.default.info
-  }, /*#__PURE__*/React.createElement("div", {
+  }, /*#__PURE__*/_react.default.createElement("div", {
     className: _JsonTableModule.default.resultInfo
-  }, tableInfo), /*#__PURE__*/React.createElement("div", {
+  }, tableInfo), /*#__PURE__*/_react.default.createElement("div", {
     className: _JsonTableModule.default.search
-  }, /*#__PURE__*/React.createElement("input", {
+  }, /*#__PURE__*/_react.default.createElement("input", {
     title: "Filtra records",
     className: "form-control form-control-sm json-table-search",
     type: "search",
@@ -335,7 +335,7 @@ function JsonTable(props) {
         updateUrl(1, '');
       }
     }
-  }))), /*#__PURE__*/React.createElement("div", {
+  }))), /*#__PURE__*/_react.default.createElement("div", {
     className: _JsonTableModule.default.content
   }, table, defaultContent)));
 } // https://it.reactjs.org/docs/typechecking-with-proptypes.html
@@ -362,22 +362,22 @@ JsonTable.defaultProps = {
   pageRows: 25,
   order: [],
   defaultContents: {
-    loading: /*#__PURE__*/React.createElement("div", {
+    loading: /*#__PURE__*/_react.default.createElement("div", {
       className: (0, _classnames.default)('spinner-border', 'text-primary', _JsonTableModule.default.msg),
       role: "status"
-    }, /*#__PURE__*/React.createElement("span", {
+    }, /*#__PURE__*/_react.default.createElement("span", {
       className: "visually-hidden"
     }, "Loading...")),
-    error: /*#__PURE__*/React.createElement("div", {
+    error: /*#__PURE__*/_react.default.createElement("div", {
       className: (0, _classnames.default)('text-danger', _JsonTableModule.default.msg)
-    }, props.iconaErrore, /*#__PURE__*/React.createElement("div", null, /*#__PURE__*/React.createElement("p", {
+    }, props.iconaErrore, /*#__PURE__*/_react.default.createElement("div", null, /*#__PURE__*/_react.default.createElement("p", {
       className: "fw-bold"
-    }, "Errore nel caricamento dei dati"), /*#__PURE__*/React.createElement("p", {
+    }, "Errore nel caricamento dei dati"), /*#__PURE__*/_react.default.createElement("p", {
       className: "xsmall"
     }, "Riprova, e se l'errore si ripete contatta l'assistenza tecnica"))),
-    nodata: /*#__PURE__*/React.createElement("div", {
+    nodata: /*#__PURE__*/_react.default.createElement("div", {
       className: (0, _classnames.default)('text-info', _JsonTableModule.default.msg)
-    }, props.iconaInfo, /*#__PURE__*/React.createElement("div", {
+    }, props.iconaInfo, /*#__PURE__*/_react.default.createElement("div", {
       className: "fw-bold"
     }, "Nessun dato disponibile"))
   }

@@ -9,7 +9,7 @@
 
 import PropTypes from 'prop-types';
 import classnames from 'classnames';
-import { useState, useEffect, useRef } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 // import styled from 'styled-components';
 import styles from './styles/JsonTable.module.scss';
 import uniqid from '@massimo-cassandro/m-utilities/js-utilities/unique-id';

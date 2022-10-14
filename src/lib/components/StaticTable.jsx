@@ -166,19 +166,23 @@ function StaticTable(props) {
       </table>
     </div>
     {props.showDownloadBtn &&
-      <div className={props.rightAlignClassName}>
-        {/* eslint-disable jsx-a11y/anchor-is-valid */}
-        <button
-          type="button"
-          className={props.downloadBtnClassName}
-          onClick={() => {
-            fileDownload(
-              tableToCsv(tableRef.current, props.zeroValuesChar),
-              setDownloadFilename(props.downloadFilename)
-            );
-          }}
-        >{props.downloadBtnLabel}</button>
-        {/* eslint-enable jsx-a11y/anchor-is-valid */}
+      <div className='d-flex'>
+        {props.footerInfo  && <div>{props.footerInfo}</div>}
+
+        <div className={`flex-grow-1 ${props.rightAlignClassName}`}>
+          {/* eslint-disable jsx-a11y/anchor-is-valid */}
+          <button
+            type="button"
+            className={props.downloadBtnClassName}
+            onClick={() => {
+              fileDownload(
+                tableToCsv(tableRef.current, props.zeroValuesChar),
+                setDownloadFilename(props.downloadFilename)
+              );
+            }}
+          >{props.downloadBtnLabel}</button>
+          {/* eslint-enable jsx-a11y/anchor-is-valid */}
+        </div>
       </div>
     }
   </>);
@@ -187,7 +191,7 @@ function StaticTable(props) {
 // https://it.reactjs.org/docs/typechecking-with-proptypes.html
 
 StaticTable.propTypes = {
-  caption                 : PropTypes.string,
+  caption                 : PropTypes.oneOfType([PropTypes.string, PropTypes.element]),
   tableClassName          : PropTypes.string,
   wrapperClassName        : PropTypes.string,
   centerAlignClassName    : PropTypes.string,
@@ -218,6 +222,7 @@ StaticTable.propTypes = {
   downloadBtnLabel        : PropTypes.string,
   downloadBtnClassName    : PropTypes.string,
   downloadFilename        : PropTypes.string,
+  footerInfo              : PropTypes.oneOfType([PropTypes.string, PropTypes.element]),
 
 };
 

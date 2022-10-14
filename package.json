@@ -1,6 +1,6 @@
 {
   "name": "@massimo-cassandro/json-table",
-  "version": "0.0.7",
+  "version": "0.0.8",
   "description": "Html table builder from json",
   "main": "dist/index.js",
   "module": "dist/esm/static-table.js",
