@@ -7,10 +7,10 @@
 
 import uniqid from '@massimo-cassandro/m-utilities/js-utilities/unique-id';
 
-import {defaults} from '../src/js/defaults';
-import {data_types} from '../src/js/columns-data-types';
-import setClassName from '../src/js/set-className';
-import downloadExcel from '../src/js/download-excel';
+import {defaults} from '../js/defaults';
+import {data_types} from '../js/columns-data-types';
+import setClassName from '../js/set-className';
+import downloadExcel from '../js/download-excel';
 
 
 function StaticTable(params) {

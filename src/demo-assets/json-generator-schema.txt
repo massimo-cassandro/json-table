@@ -1,0 +1,19 @@
+https://json-generator.com/
+
+[
+  '{{repeat(5, 7)}}',
+  {
+    id: '{{index()}}',
+    isActive: '{{bool()}}',
+    amount: '{{floating(1000, 4000, 2, "€0.00")}}',
+    age: '{{integer(20, 40)}}',
+    email: '{{email()}}',
+    phone: '{{phone()}}',
+    data: {
+      date: '{{date(new Date(2014, 0, 1), new Date(), "YYYY-MM-ddThh:mm:ss Z")}}',
+      timezone_type: 3,
+      timezone: "Europe/Berlin"
+   },
+    about: '{{lorem(integer(2, 25), "words")}}'
+  }
+]
