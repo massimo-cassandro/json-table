@@ -1,6 +1,6 @@
 {
   "name": "@massimo-cassandro/json-table",
-  "version": "0.0.12",
+  "version": "0.0.13",
   "description": "Html table builder from json",
   "main": "dist/react/index.js",
   "module": "dist/react/index.js",

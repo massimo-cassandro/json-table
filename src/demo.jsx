@@ -1,5 +1,7 @@
-import './demo.css';
+import './src-demo-assets/demo.scss';
 import {JsonTable} from './lib/index';
+import {StaticTable} from './lib/index';
+import jsonDemo from './src-demo-assets/static-table-demo.json';
 
 function Demo() {
   return (<>
@@ -23,53 +25,119 @@ function Demo() {
         "about": "sit dolor nostrud officia id cillum occaecat Lorem cupidatat consequat esse sunt ut est velit sit minim exercitation"
       },
     */}
-    <JsonTable
-      caption='Table caption'
-      tableClassName='table table-bordered'
-      ajaxUrl='./demo-assets/ajax-demo.json'
-      order={[[1,'desc']]}
+    <div className='position-relative'>
+      <JsonTable
+        caption='Table caption'
+        tableClassName='table table-bordered'
+        ajaxUrl='./demo-assets/ajax-demo.json'
+        order={[[1,'desc']]}
+        columns={[
+          {
+            title       : '#',
+            data        : 'id',
+            className   : 'text-end'
+          },
+          {
+            title       : 'Date',
+            data        : 'date',
+            className   : 'text-end',
+            type        : 'sf_date'
+          },
+          {
+            data        : 'age',
+            visible     : false
+          },
+          {
+            title       : 'Amounts diff.',
+            render      : row => row.amount2 - row.amount1,
+            type        : 'euro'
+          },
+          {
+            title       : 'About',
+            data        : 'about'
+          },
+          {
+            title       : 'Email',
+            data        : 'email'
+          },
+          {
+            title       : 'Phone',
+            data        : 'phone'
+          },
+          {
+            title       : 'Boolean (to do)',
+            data        : 'isActive'
+          }
+        ]}
+      />
+    </div>
+
+    <h2>Static Table</h2>
+    {/*
+      {
+        "id": 350,
+        "isActive": true,
+        "number1": 1081.55,
+        "number2": 4411.51,
+        "date": "2017-06-20",
+        "datetime": "2015-02-21T01:23:49",
+        "text": "sit officia in",
+        "perc": 42.33,
+        "percDecimal": 0.19,
+        "euro": 879.21
+      },
+    */}
+
+    <StaticTable
+      tableClassName='table table-striped table-hover'
+      showDownloadBtn={true}
+      caption='table-caption'
       columns={[
         {
+          key         : 'id',
           title       : '#',
-          data        : 'id',
-          className   : 'text-end'
+          dataType    : 'num',
+          rowHeading  : true
         },
         {
+          key         : 'isActive',
+          title       : 'Bool (to do)',
+          dataType    : 'bool'
+        },
+        {
+          title       : 'parsed',
+          parse       : row => row.number2 - row.number1,
+          dataType    : 'num'
+        },
+        {
+          key         : 'date',
           title       : 'Date',
-          data        : 'date',
-          className   : 'text-end',
-          type        : 'sf_date'
+          dataType    : 'date'
         },
         {
-          data        : 'age',
-          visible     : false
+          key         : 'datetime',
+          title       : 'Datetime (todo)',
+          dataType    : 'datetime'
         },
         {
-          title       : 'Amounts diff.',
-          render      : row => row.amount2 - row.amount1,
-          type        : 'euro'
+          key         : 'perc',
+          title       : 'Perc.',
+          dataType    : 'perc'
         },
         {
-          title       : 'About',
-          data        : 'about'
+          key         : 'percDecimal',
+          title       : 'Perc. (decimal)',
+          dataType    : 'percDecimal'
         },
         {
-          title       : 'Email',
-          data        : 'email'
-        },
-        {
-          title       : 'Phone',
-          data        : 'phone'
-        },
-        {
-          title       : 'Boolean (to do)',
-          data        : 'isActive'
+          key         : 'euro',
+          title       : 'Euro',
+          dataType    : 'euro'
         }
 
       ]}
+      data={jsonDemo}
     />
-
-    <h2>Static Table</h2>
 
   </>);
 }

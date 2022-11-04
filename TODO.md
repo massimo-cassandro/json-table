@@ -1,5 +1,18 @@
 #TODO
 
+* rivedere classi e props demo
+
+## json table
+* fix props.icone in jsonTable (viene bypassata dal default)
+* opzione per usare paramentri più semplici non compatibili con dt
+* add parse cell method (unificare tipi con static Table)
+
+
+## static Table react
+* unire con versione esm
+
+
+
 * responsive table
 
 * https://www.raymondcamden.com/2022/05/23/building-table-sorting-and-pagination-in-a-web-component

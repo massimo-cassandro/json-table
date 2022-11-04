@@ -7,8 +7,6 @@
  * @author Massimo Cassandro
  */
 
-// TODO opzione per usare paramentri più semplici non compatibili con dt
-// TODO add parse cell method
 
 import PropTypes from 'prop-types';
 import classnames from 'classnames';
