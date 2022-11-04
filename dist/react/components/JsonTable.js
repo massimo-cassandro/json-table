@@ -339,25 +339,29 @@ JsonTable.defaultProps = {
   tableClassName: 'table',
   pageRows: 25,
   order: [],
-  defaultContents: {
-    loading: /*#__PURE__*/_react.default.createElement("div", {
-      className: (0, _classnames.default)('spinner-border', 'text-primary', _JsonTableModule.default.msg),
-      role: "status"
-    }, /*#__PURE__*/_react.default.createElement("span", {
-      className: "visually-hidden"
-    }, "Loading...")),
-    error: /*#__PURE__*/_react.default.createElement("div", {
-      className: (0, _classnames.default)('text-danger', _JsonTableModule.default.msg)
-    }, props.iconaErrore, /*#__PURE__*/_react.default.createElement("div", null, /*#__PURE__*/_react.default.createElement("p", {
-      className: "fw-bold"
-    }, "Errore nel caricamento dei dati"), /*#__PURE__*/_react.default.createElement("p", {
-      className: "xsmall"
-    }, "Riprova, e se l'errore si ripete contatta l'assistenza tecnica"))),
-    nodata: /*#__PURE__*/_react.default.createElement("div", {
-      className: (0, _classnames.default)('text-info', _JsonTableModule.default.msg)
-    }, props.iconaInfo, /*#__PURE__*/_react.default.createElement("div", {
-      className: "fw-bold"
-    }, "Nessun dato disponibile"))
+  iconaErrore: null,
+  iconaInfo: null,
+  get defaultContents() {
+    return {
+      loading: /*#__PURE__*/_react.default.createElement("div", {
+        className: (0, _classnames.default)('spinner-border', 'text-primary', _JsonTableModule.default.msg),
+        role: "status"
+      }, /*#__PURE__*/_react.default.createElement("span", {
+        className: "visually-hidden"
+      }, "Loading...")),
+      error: /*#__PURE__*/_react.default.createElement("div", {
+        className: (0, _classnames.default)('text-danger', _JsonTableModule.default.msg)
+      }, this.iconaErrore, /*#__PURE__*/_react.default.createElement("div", null, /*#__PURE__*/_react.default.createElement("p", {
+        className: "fw-bold"
+      }, "Errore nel caricamento dei dati"), /*#__PURE__*/_react.default.createElement("p", {
+        className: "xsmall"
+      }, "Riprova, e se l'errore si ripete contatta l'assistenza tecnica"))),
+      nodata: /*#__PURE__*/_react.default.createElement("div", {
+        className: (0, _classnames.default)('text-info', _JsonTableModule.default.msg)
+      }, this.iconaInfo, /*#__PURE__*/_react.default.createElement("div", {
+        className: "fw-bold"
+      }, "Nessun dato disponibile"))
+    };
   }
 };
 var _default = JsonTable;

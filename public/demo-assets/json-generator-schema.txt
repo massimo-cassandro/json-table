@@ -1,0 +1,25 @@
+https://json-generator.com/
+
+{
+  "draw": 1,
+  "recordsTotal": '{{integer(500, 1000)}}',
+  "recordsFiltered": '{{integer(350, 500)}}',
+  "data": [
+    '{{repeat(10, 20)}}',
+    {
+      id: '{{integer(350, 1250)}}',
+      isActive: '{{bool()}}',
+      amount1: '{{floating(1000, 4000, 2, "0.00")}}',
+      amount2: '{{floating(3000, 5000, 2, "0.00")}}',
+      age: '{{integer(20, 40)}}',
+      email: '{{email()}}',
+      phone: '{{phone()}}',
+      date: {
+        date: '{{date(new Date(2014, 0, 1), new Date(), "YYYY-MM-ddThh:mm:ss Z")}}',
+        timezone_type: 3,
+        timezone: "Europe/Berlin"
+     },
+      about: '{{lorem(integer(2, 25), "words")}}'
+    }
+  ]
+}

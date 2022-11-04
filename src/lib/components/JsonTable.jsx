@@ -7,6 +7,9 @@
  * @author Massimo Cassandro
  */
 
+// TODO opzione per usare paramentri più semplici non compatibili con dt
+// TODO add parse cell method
+
 import PropTypes from 'prop-types';
 import classnames from 'classnames';
 import React, { useState, useEffect, useRef } from 'react';
@@ -98,6 +101,8 @@ function JsonTable(props) {
   useEffect(() => {
 
     const setDefaultContent = (contentType, offsetTop) => {
+
+
       updateDefaultContent(contentType &&
         <div className={styles.msgWrapper} style={{paddingTop: offsetTop? `${offsetTop - 10}px` : null}}>
           {props.defaultContents[contentType]}
@@ -421,24 +426,28 @@ JsonTable.defaultProps = {
   tableClassName        : 'table',
   pageRows              : 25,
   order                 : [],
+  iconaErrore           : null,
+  iconaInfo             : null,
 
-  defaultContents: {
-    loading: <div className={classnames('spinner-border', 'text-primary', styles.msg)} role="status">
-      <span className="visually-hidden">Loading...</span>
-    </div>,
+  get defaultContents() {
+    return {
+      loading: <div className={classnames('spinner-border', 'text-primary', styles.msg)} role="status">
+        <span className="visually-hidden">Loading...</span>
+      </div>,
 
-    error: <div className={classnames('text-danger', styles.msg)}>
-      {props.iconaErrore}
-      <div>
-        <p className="fw-bold">Errore nel caricamento dei dati</p>
-        <p className="xsmall">Riprova, e se l'errore si ripete contatta l'assistenza tecnica</p>
+      error: <div className={classnames('text-danger', styles.msg)}>
+        {this.iconaErrore}
+        <div>
+          <p className="fw-bold">Errore nel caricamento dei dati</p>
+          <p className="xsmall">Riprova, e se l'errore si ripete contatta l'assistenza tecnica</p>
+        </div>
+      </div>,
+
+      nodata: <div className={classnames('text-info', styles.msg)}>
+        {this.iconaInfo}
+        <div className="fw-bold">Nessun dato disponibile</div>
       </div>
-    </div>,
-
-    nodata: <div className={classnames('text-info', styles.msg)}>
-      {props.iconaInfo}
-      <div className="fw-bold">Nessun dato disponibile</div>
-    </div>
+    };
   }
 };
 
