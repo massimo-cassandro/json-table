@@ -1,6 +1,7 @@
 #TODO
 
 * rivedere classi e props demo
+* jsdoc
 
 ## json table
 * fix props.icone in jsonTable (viene bypassata dal default)

@@ -6,13 +6,13 @@
 
 import PropTypes from 'prop-types';
 // import classnames from 'classnames';
-import { useRef } from 'react';
+import React from 'react';
 // import uniqid from '@massimo-cassandro/m-utilities/js-utilities/unique-id';
 import tableToCsv from '../../js/table-to-csv';
 import fileDownload from 'js-file-download';
 
 function StaticTable(props) {
-  const tableRef= useRef();
+  const tableRef= React.useRef();
 
   // formattazioni std per i vari tipi di dati
   // la classe std viene sovrascitta se presente come parametro nella colonna
