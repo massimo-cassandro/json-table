@@ -6,7 +6,7 @@ Object.defineProperty(exports, "__esModule", {
 exports.default = void 0;
 var _propTypes = _interopRequireDefault(require("prop-types"));
 var _react = require("react");
-var _tableToCsv = _interopRequireDefault(require("../../js/table-to-csv"));
+var _tableToCsv = _interopRequireDefault(require("../../src/table-to-csv"));
 var _jsFileDownload = _interopRequireDefault(require("js-file-download"));
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 /**
@@ -29,7 +29,7 @@ function StaticTable(props) {
       // element: {},
       date: {
         className: props.centerAlignClassName,
-        render: d => Date(d).toLocaleString('it-IT', {
+        render: d => new Date(d).toLocaleString('it-IT', {
           year: 'numeric',
           // '2-digit'
           month: '2-digit',
