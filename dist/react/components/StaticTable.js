@@ -5,7 +5,7 @@ Object.defineProperty(exports, "__esModule", {
 });
 exports.default = void 0;
 var _propTypes = _interopRequireDefault(require("prop-types"));
-var _react = require("react");
+var _react = _interopRequireDefault(require("react"));
 var _tableToCsv = _interopRequireDefault(require("../../src/table-to-csv"));
 var _jsFileDownload = _interopRequireDefault(require("js-file-download"));
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
@@ -20,7 +20,7 @@ function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { de
 // import uniqid from '@massimo-cassandro/m-utilities/js-utilities/unique-id';
 
 function StaticTable(props) {
-  const tableRef = (0, _react.useRef)();
+  const tableRef = _react.default.useRef();
 
   // formattazioni std per i vari tipi di dati
   // la classe std viene sovrascitta se presente come parametro nella colonna
@@ -29,7 +29,7 @@ function StaticTable(props) {
       // element: {},
       date: {
         className: props.centerAlignClassName,
-        render: d => new Date(d).toLocaleString('it-IT', {
+        render: d => new new Date(d).toLocaleString('it-IT', {
           year: 'numeric',
           // '2-digit'
           month: '2-digit',
@@ -82,7 +82,7 @@ function StaticTable(props) {
     };
   const TableHeadings = () => {
     return props.columns.map((col, idx) => {
-      return /*#__PURE__*/React.createElement("th", {
+      return /*#__PURE__*/_react.default.createElement("th", {
         className: setClassName(col, false),
         key: idx,
         scope: "col"
@@ -91,7 +91,7 @@ function StaticTable(props) {
   };
   const tableRows = data => {
     return data.map((row, idx) => {
-      return /*#__PURE__*/React.createElement("tr", {
+      return /*#__PURE__*/_react.default.createElement("tr", {
         key: idx
       }, props.columns.map((col, i) => {
         let content,
@@ -114,7 +114,7 @@ function StaticTable(props) {
         }
         const isTh = col.rowHeading && i === 0,
           CellTag = isTh ? 'th' : 'td';
-        return /*#__PURE__*/React.createElement(CellTag, {
+        return /*#__PURE__*/_react.default.createElement(CellTag, {
           scope: isTh ? 'row' : null,
           key: i,
           className: setClassName(col, addFormatClass)
@@ -126,16 +126,16 @@ function StaticTable(props) {
     str = str.replace(/(\.csv)$/, '').replace(/[/:]/g, '-').replace(/-+/g, '-').replace(/^-/, '').replace(/-$/, '');
     return str + ' [' + new Date().toISOString().split('T')[0] + '].csv';
   };
-  return /*#__PURE__*/React.createElement(React.Fragment, null, /*#__PURE__*/React.createElement("div", {
+  return /*#__PURE__*/_react.default.createElement(_react.default.Fragment, null, /*#__PURE__*/_react.default.createElement("div", {
     className: props.wrapperClassName
-  }, /*#__PURE__*/React.createElement("table", {
+  }, /*#__PURE__*/_react.default.createElement("table", {
     className: props.tableClassName,
     ref: tableRef
-  }, props.caption && /*#__PURE__*/React.createElement("caption", null, props.caption), /*#__PURE__*/React.createElement("thead", null, /*#__PURE__*/React.createElement("tr", null, /*#__PURE__*/React.createElement(TableHeadings, null))), /*#__PURE__*/React.createElement("tbody", null, tableRows(props.data)), props.footerData && /*#__PURE__*/React.createElement("tfoot", null, tableRows(props.footerData)))), props.showDownloadBtn && /*#__PURE__*/React.createElement("div", {
+  }, props.caption && /*#__PURE__*/_react.default.createElement("caption", null, props.caption), /*#__PURE__*/_react.default.createElement("thead", null, /*#__PURE__*/_react.default.createElement("tr", null, /*#__PURE__*/_react.default.createElement(TableHeadings, null))), /*#__PURE__*/_react.default.createElement("tbody", null, tableRows(props.data)), props.footerData && /*#__PURE__*/_react.default.createElement("tfoot", null, tableRows(props.footerData)))), props.showDownloadBtn && /*#__PURE__*/_react.default.createElement("div", {
     className: "d-flex"
-  }, props.footerInfo && /*#__PURE__*/React.createElement("div", null, props.footerInfo), /*#__PURE__*/React.createElement("div", {
+  }, props.footerInfo && /*#__PURE__*/_react.default.createElement("div", null, props.footerInfo), /*#__PURE__*/_react.default.createElement("div", {
     className: `flex-grow-1 ${props.rightAlignClassName}`
-  }, /*#__PURE__*/React.createElement("button", {
+  }, /*#__PURE__*/_react.default.createElement("button", {
     type: "button",
     className: props.downloadBtnClassName,
     onClick: () => {
