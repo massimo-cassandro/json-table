@@ -11,6 +11,7 @@ Html table builder from Ajax json
 * rivedere classi e props demo
 * unificare json table e static table
   * aggiunta parametro "ajax" true|false (se tru usa `ajaxUrl`, se false usa `data`)
+* jsdoc
 
 ### json table
 * fix props.icone in jsonTable (viene bypassata dal default)
