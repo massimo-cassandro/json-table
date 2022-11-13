@@ -29,7 +29,7 @@ function StaticTable(props) {
       // element: {},
       date: {
         className: props.centerAlignClassName,
-        render: d => new new Date(d).toLocaleString('it-IT', {
+        render: d => new Date(d).toLocaleString('it-IT', {
           year: 'numeric',
           // '2-digit'
           month: '2-digit',
