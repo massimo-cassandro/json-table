@@ -18,6 +18,7 @@ Html table builder from Ajax json
 * opzione per usare paramentri più semplici non compatibili con dt
 * add parse cell method (unificare tipi con static Table)
 * rivedere css, utilizzo custom props
+* bug: se un elemento è posizionato sopra la tabella, il posizionamento sticky funziona male (vedi popuop salvadanaio)
 
 
 ### static Table react
