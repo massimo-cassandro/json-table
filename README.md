@@ -8,6 +8,9 @@ Html table builder from Ajax json
 
 ## TODO
 
+* cambiare elemento `data` di `columns` in `field`
+* rinominare tipo `sf_date` in `sfDate` (e simili)
+
 * rivedere classi e props demo
 * unificare json table e static table
   * aggiunta parametro "ajax" true|false (se tru usa `ajaxUrl`, se false usa `data`)

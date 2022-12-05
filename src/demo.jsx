@@ -1,3 +1,4 @@
+// For demo purposes only
 import './src-demo-assets/demo.scss';
 import {JsonTable} from './lib/index';
 import {StaticTable} from './lib/index';
@@ -10,19 +11,20 @@ function Demo() {
     <h2>Json Table</h2>
     {/*
       {
-        "id": 1063,
-        "isActive": false,
-        "amount1": 1026.5,
-        "amount2": 3256.25,
-        "age": 33,
-        "email": "gildaharding@bicol.com",
-        "phone": "(912) 531-3743",
-        "date": {
-          "date": "2019-01-13T05:14:32 -01:00",
+        "id": 1153,
+        "isActive": true,
+        "amount1": 1240.43,
+        "amount2": 4599.57,
+        "age": 38,
+        "email": "shaunamarsh@zentix.com",
+        "phone": "397.05.40.381",
+        "date": "2016-06-17T10:14:07-02:00",
+        "sfdate": {
+          "date": "2017-07-28 09:23:24",
           "timezone_type": 3,
           "timezone": "Europe/Berlin"
         },
-        "about": "sit dolor nostrud officia id cillum occaecat Lorem cupidatat consequat esse sunt ut est velit sit minim exercitation"
+        "about": "sint commodo incididunt amet quis exercitation aliqua dolor duis nisi nulla reprehenderit"
       },
     */}
     <div className='position-relative'>
@@ -39,7 +41,7 @@ function Demo() {
           },
           {
             title       : 'Date',
-            data        : 'date',
+            data        : 'sfdate',
             className   : 'text-end',
             type        : 'sf_date'
           },

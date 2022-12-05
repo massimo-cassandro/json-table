@@ -1,3 +1,12 @@
+/**
+ * Parametri di configurazione
+ * @property {array} columns - colonne della tabella
+ * @property {array} data - array dei dati
+ * @property {array} footerData - array dei dati da renderizzare nell'elemento <tfoot>
+ * @author Massimo Cassandro
+ */
+
+
 export const defaults = {
   columns                 : [], // definizione delle colonne
   data                    : [], // dati
