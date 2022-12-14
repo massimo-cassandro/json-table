@@ -3,17 +3,26 @@
 import {defaults} from './defaults';
 
 export const data_types = {
-  // string: {}
+  // string: {} // default type
   date: {
-    className                : defaults.rightAlignClassName,
+    className: defaults.rightAlignClassName,
     render: d => (new Date(d)).toLocaleString('it-IT', {
       year    : 'numeric', // '2-digit'
       month   : '2-digit', // 'short'
       day     : '2-digit' // 'numeric
     })
   },
+  // symfony date field
+  sfDate: {
+    className: defaults.rightAlignClassName,
+    render: d => (new Date(d.date)).toLocaleString('it-IT', {
+      year    : 'numeric', // '2-digit'
+      month   : '2-digit', // 'short'
+      day     : '2-digit' // 'numeric
+    })
+  },
   datetime: {
-    className                : defaults.rightAlignClassName,
+    className: defaults.rightAlignClassName,
     render: d => {
       const date = new Date(d);
       return date.toLocaleString('it-IT', {
@@ -32,13 +41,13 @@ export const data_types = {
     }
   },
   num: {
-    className                 : defaults.rightAlignClassName,
+    className: defaults.rightAlignClassName,
     render: d => (d? +d : 0).toLocaleString('it-IT', {
       maximumFractionDigits   : 2
     })
   },
   perc: {
-    className                 : defaults.rightAlignClassName,
+    className: defaults.rightAlignClassName,
     formatClassName           : defaults.percClassName,
     render: d => (d? +d : 0).toLocaleString('it-IT', {
       maximumFractionDigits   : 2,
@@ -46,7 +55,7 @@ export const data_types = {
     })
   },
   percDecimal: {
-    className                 : defaults.rightAlignClassName,
+    className: defaults.rightAlignClassName,
     formatClassName           : defaults.percClassName,
     render: d => ((d? +d : 0) * 100).toLocaleString('it-IT', {
       maximumFractionDigits   : 2,
@@ -54,11 +63,11 @@ export const data_types = {
     })
   },
   euro: {
-    className                 : defaults.rightAlignClassName,
+    className: defaults.rightAlignClassName,
     formatClassName           : defaults.euroClassName,
     render: d => (d? +d : 0).toLocaleString('it-IT', {
       minimumFractionDigits   : 2,
       maximumFractionDigits   : 2
     })
   }
-}
+};

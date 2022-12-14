@@ -7,7 +7,7 @@
 
 import uniqid from '@massimo-cassandro/m-utilities/js-utilities/unique-id';
 
-import {defaults} from '../src/defaults';
+import {defaults, columns_default} from '../src/defaults';
 import {data_types} from '../src/columns-data-types';
 import setClassName from '../src/set-className';
 import downloadExcel from '../src/download-excel';
@@ -18,16 +18,6 @@ function JsonTable(params) {
   params = {
     ...defaults,
     ...params
-  };
-
-  const columns_default = {
-    title                     : null, // titolo colonna (testo th)
-    key                       : null, // chiave oggetto del json
-    dataType                  : null, // tipo dati
-    className                 : null, // classe
-    render                    : null, // funzione ad hoc per il rendering
-    parse                     : null, // funzione ad hoc per elaborare il valore
-    rowHeading                : false // se true, viene creato un elemento th[scope=row] invece di un td
   };
 
   // assegnazione columns defaults

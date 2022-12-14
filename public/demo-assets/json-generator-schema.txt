@@ -4,39 +4,37 @@ token: jztyih6vdlyn3tv3cy168irz7jglfmmsaftp5g64
 
 https://api.json-generator.com/templates/0ScAfQZgpY70/data?access_token=jztyih6vdlyn3tv3cy168irz7jglfmmsaftp5g64
 
+JG.repeat(1, 1, {
+  draw: 1,
+  recordsTotal: JG.integer(100, 500),
+  recordsFiltered: JG.integer(10, 80),
+  data: JG.repeat(10, 25, {
+    id: JG.integer(300, 1250),
+    isActive: JG.bool(),
+    amount1: JG.floating(1000, 4000),
+    amount2: JG.floating(10000, 50000, 3),
+    age: JG.integer(20, 40),
+    email() {
+      return (
+        _.snakeCase(`${JG.firstName()} ${JG.lastName()}`) +
+        '@' +
+        JG.company() +
+        JG.domainZone()
+      ).toLowerCase();
+    },
+    phone: JG.integer(123456789),
+    date: JG.date(new Date(2010, 0, 1)),
+    sfdate() {
+      return {
+        date: JG.date(new Date(2010, 0, 1)),
+        timezone_type: 3,
+        timezone: "Europe/Berlin"
+      };
+    },
+    about: JG.loremIpsum({units: 'words', count: 4})
+  })
+});
 
-{
-  "draw": 1,
-  "recordsTotal": JG.integer(500, 1000),
-  "recordsFiltered": JG.integer(300, 500),
-  "data": [
-    JG.repeat(10, 25, {
-      id: JG.integer(300, 1250),
-      isActive: JG.bool(),
-      amount1: JG.floating(1000, 4000),
-      amount2: JG.floating(10000, 50000, 3),
-      age: JG.integer(20, 40),
-      email() {
-        return (
-          _.snakeCase(`${JG.firstName()} ${JG.lastName()}`) +
-          '@' +
-          JG.company(),
-          JG.domainZone()
-        ).toLowerCase();
-      },
-      phone: JG.integer(123456789),
-      date: JG.date(new Date(2010, 0, 1)),
-      sfdate() {
-        return {
-          date: JG.date(new Date(2010, 0, 1)),
-          timezone_type: 3,
-          timezone: "Europe/Berlin"
-        };
-      },
-      about: JG.loremIpsum({units: 'words', count: 4})
-    })
-  ]
-}
 
 
 

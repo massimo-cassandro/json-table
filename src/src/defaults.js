@@ -9,7 +9,9 @@
 
 export const defaults = {
   columns                 : [], // definizione delle colonne
-  data                    : [], // dati
+  ajax                    : true, // se true usa `ajaxUrl` e ignora `data`
+  ajaxUrl                 : null, // url ajax
+  data                    : [], // dati (per versione statica)
   footerData              : [],
   caption                 : null,
   addRowIndex             : false, // se true aggiunge un attributo data al tr con l'indice del record json
@@ -35,4 +37,14 @@ export const defaults = {
   // name - nome dela foglio
   // data - array già formattato da trasformare in excel
   extraDownloadSheets     : null
+};
+
+export const columns_default = {
+  title                     : null, // titolo colonna (testo th)
+  key                       : null, // chiave oggetto del json
+  dataType                  : null, // tipo dati
+  className                 : null, // classe
+  render                    : null, // funzione ad hoc per il rendering
+  parse                     : null, // funzione ad hoc per elaborare il valore
+  rowHeading                : false // se true, viene creato un elemento th[scope=row] invece di un td
 };
