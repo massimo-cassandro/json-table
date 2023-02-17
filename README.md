@@ -17,6 +17,12 @@ Html table builder from Ajax json
 * rivedere css, utilizzo custom props
 * bug: se un elemento è posizionato sopra la tabella, il posizionamento sticky funziona male (vedi popuop salvadanaio)
 
+### form ricerca
+* prevedere salvataggio dati ricerca nel sessionstorage
+* prevedere utilizzo autocomplete (salvare sia il valore che la definizione)
+* prevedere utilizzo parametri non presenti nel json del dt
+* prevedere cbox e radio
+
 
 ### static Table react
 * unire con versione esm
